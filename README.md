@@ -6,9 +6,11 @@ Polly was my entry in the 2008 [CS 248](http://graphics.stanford.edu/courses/cs2
 
 ## Download
 
-Polly-B-Gone is currently available only for Mac OS X. It has only been tested on 10.5 (Leopard), but it probably works on other versions. For other platforms, you’ll need to build from source and make modifications as necessary.
+Polly-B-Gone is currently available as a binary only for Mac OS X:
 
-(Download link coming soon.)
+* [polly-1.0.dmg.zip](http://cs.stanford.edu/people/mbostock/polly/polly-1.0.dmg.zip)
+
+It has only been tested on 10.5 (Leopard), but it probably works on other versions. For other platforms, you’ll need to build from source and make modifications as necessary.
 
 ## Screenshots
 
@@ -21,4 +23,4 @@ Polly-B-Gone is currently available only for Mac OS X. It has only been tested o
 
 ## Documentation
 
-The entire game world for Polly-B-Gone is specified as an XML file. You can edit world.xml to create new levels, new puzzles, and even change the music, textures and lighting! See the [/mbostock/polly-b-gone/wiki] for details.
+The entire game world for Polly-B-Gone is specified as an XML file. You can edit world.xml to create new levels, new puzzles, and even change the music, textures and lighting! See the [wiki](/mbostock/polly-b-gone/wiki) for details.
