@@ -64,7 +64,7 @@ obj/main.out : \
 	obj/wall.o \
 	obj/world.o \
 	obj/worlds.o \
-	SDLMain.m
+	src/SDLMain.m
 
 obj/physics/particle_test.out : \
 	obj/physics/force.o \
@@ -94,16 +94,10 @@ obj/Polly-B-Gone.app : obj/main.out $(RESOURCES) resources/Info.plist Makefile
 	find $@/Contents/Frameworks -name Headers | xargs rm -r
 #	ln -sf ../../../../resources/world.xml $@/Contents/Resources/world.xml
 
-physics/%.run : obj/physics/%.out
-	./$<
-
-%.run : obj/%.out
-	./$<
-
 obj/%.out : obj/%.o
 	$(CXX) $(LDFLAGS) -o $@ $^
 
-obj/%.o : %.cpp
+obj/%.o : src/%.cpp
 	mkdir -p $(@D)
 	$(CXX) -c $(CXXFLAGS) -o $@ $<
 
