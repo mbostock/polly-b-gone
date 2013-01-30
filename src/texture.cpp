@@ -1,9 +1,16 @@
 // -*- C++ -*-
 
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
-#include <SDL/sdl.h>
-#include <SDL_image/SDL_image.h>
+#ifdef __APPLE__
+  #include <OpenGL/gl.h>
+  #include <OpenGL/glu.h>
+  #include <SDL/sdl.h>
+  #include <SDL_image/SDL_image.h>
+#else
+  #include <GL/gl.h>
+  #include <GL/glu.h>
+  #include <SDL/SDL.h>
+  #include <SDL/SDL_image.h>
+#endif
 #include <iostream>
 #include <string>
 #include <vector>

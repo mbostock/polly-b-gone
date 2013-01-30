@@ -1,4 +1,11 @@
-#include <TinyXML/tinyxml.h>
+#ifdef __APPLE__
+  #include <TinyXML/tinyxml.h>
+#else
+#ifndef TIXML_USE_STL
+  #define TIXML_USE_STL
+#endif
+  #include <tinyxml.h>
+#endif
 #include <iostream>
 #include <list>
 #include <map>

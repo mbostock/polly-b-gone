@@ -1,7 +1,12 @@
 // -*- C++ -*-
 
-#include <SDL/SDL_error.h>
-#include <SDL_mixer/SDL_mixer.h>
+#ifdef __APPLE__
+  #include <SDL/SDL_error.h>
+  #include <SDL_mixer/SDL_mixer.h>
+#else
+  #include <SDL/SDL_error.h>
+  #include <SDL/SDL_mixer.h>
+#endif
 #include <iostream>
 #include <string>
 #include <vector>

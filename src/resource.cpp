@@ -9,7 +9,11 @@
 using namespace mbostock;
 
 const char* Resources::path() {
-  return "Contents/Resources/";
+#ifdef __APPLE__
+   return "Contents/Resources/";
+#else
+  return "resources/";
+#endif
 }
 
 const char* Resources::readFile(const char* p) {

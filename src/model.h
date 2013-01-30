@@ -3,7 +3,11 @@
 #ifndef MBOSTOCK_MODEL_H
 #define MBOSTOCK_MODEL_H
 
-#include <OpenGL/glu.h>
+#ifdef __APPLE__
+  #include <OpenGL/glu.h>
+#else
+  #include <GL/glu.h>
+#endif
 
 #include "physics/shape.h"
 #include "physics/vector.h"

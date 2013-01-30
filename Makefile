@@ -1,3 +1,7 @@
+
+MACHINE= $(shell uname -s)
+
+ifeq ($(MACHINE),Darwin)
 CXXFLAGS = \
 	-O2 \
 	-I/System/Library/Frameworks/GLUT.framework/Headers \
@@ -24,8 +28,29 @@ RESOURCES = \
 	resources/*.png \
 	resources/*.vert \
 	resources/world.xml
+ 
+else
+LIBS = \
+	`sdl-config --cflags` \
+	-I/usr/include \
+	-lGLU \
+	-lGL \
+	-lGLEW \
+	-lglut \
+	-lSDL \
+	-lSDL_image \
+	-lSDL_mixer \
+	-ltinyxml
 
+endif
+
+ifeq ($(MACHINE),Darwin)
 all : obj/Polly-B-Gone.app
+else
+all : obj/polly-b-gone
+endif
+
+ifeq ($(MACHINE),Darwin)
 
 obj/main.out : \
 	obj/ball.o \
@@ -66,6 +91,48 @@ obj/main.out : \
 	obj/worlds.o \
 	src/SDLMain.m
 
+else
+
+obj/main.out : \
+	obj/ball.o \
+	obj/block.o \
+	obj/escalator.o \
+	obj/fan.o \
+	obj/lighting.o \
+	obj/material.o \
+	obj/model.o \
+	obj/physics/constraint.o \
+	obj/physics/force.o \
+	obj/physics/particle.o \
+	obj/physics/rotation.o \
+	obj/physics/shape.o \
+	obj/physics/transform.o \
+	obj/physics/translation.o \
+	obj/physics/vector.o \
+	obj/player.o \
+	obj/portal.o \
+	obj/ramp.o \
+	obj/resource.o \
+	obj/room.o \
+	obj/room_force.o \
+	obj/room_object.o \
+	obj/rotating.o \
+	obj/seesaw.o \
+	obj/shader.o \
+	obj/simulation.o \
+	obj/sound.o \
+	obj/switch.o \
+	obj/texture.o \
+	obj/trail.o \
+	obj/transforming.o \
+	obj/translating.o \
+	obj/tube.o \
+	obj/wall.o \
+	obj/world.o \
+	obj/worlds.o
+
+endif
+
 obj/physics/particle_test.out : \
 	obj/physics/force.o \
 	obj/physics/particle.o \
@@ -78,6 +145,8 @@ obj/physics/shape_test.out : \
 
 obj/physics/vector_test.out : \
 	obj/physics/vector.o
+
+ifeq ($(MACHINE),Darwin)
 
 obj/Polly-B-Gone.app : obj/main.out $(RESOURCES) resources/Info.plist Makefile
 	rm -rf $@
@@ -94,8 +163,17 @@ obj/Polly-B-Gone.app : obj/main.out $(RESOURCES) resources/Info.plist Makefile
 	find $@/Contents/Frameworks -name Headers | xargs rm -r
 #	ln -sf ../../../../resources/world.xml $@/Contents/Resources/world.xml
 
+else
+obj/polly-b-gone : obj/main.out
+	mv obj/main.out polly-b-gone
+endif
+
 obj/%.out : obj/%.o
+ifeq ($(MACHINE),Darwin)
 	$(CXX) $(LDFLAGS) -o $@ $^
+else
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+endif
 
 obj/%.o : src/%.cpp
 	mkdir -p $(@D)

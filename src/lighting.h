@@ -3,7 +3,11 @@
 #ifndef MBOSTOCK_LIGHTING_H
 #define MBOSTOCK_LIGHTING_H
 
-#include <OpenGL/gl.h>
+#ifdef __APPLE__
+  #include <OpenGL/gl.h>
+#else
+  #include <GL/gl.h>
+#endif
 
 namespace mbostock {
 

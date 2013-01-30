@@ -1,6 +1,10 @@
 // -*- C++ -*-
 
-#include <SDL/sdl.h>
+#ifdef __APPLE_
+  #include <SDL/sdl.h>
+#else
+  #include <SDL/SDL.h>
+#endif
 
 #include "simulation.h"
 

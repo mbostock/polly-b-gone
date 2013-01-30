@@ -1,6 +1,9 @@
 // -*- C++ -*-
 
 #include <stdlib.h>
+#ifndef __APPLE__
+  #include <GL/glew.h>
+#endif
 
 #include "model.h"
 #include "resource.h"

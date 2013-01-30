@@ -1,11 +1,21 @@
 // -*- C++ -*-
 
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
+#ifdef __APPLE__
+  #include <OpenGL/gl.h>
+  #include <OpenGL/glu.h>
+#else
+  #include <GL/gl.h>
+  #include <GL/glu.h>
+  #include <GL/glut.h>
+#endif
 #include <SDL/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <TinyXML/tinyxml.h>
+#ifdef __APPLE__
+  #include <TinyXML/tinyxml.h>
+#else
+  #include <tinyxml.h>
+#endif
 
 #include "room.h"
 #include "shader.h"
@@ -116,19 +126,31 @@ static void toggleFullScreen() {
 static void handleKeyDown(SDL_Event* event) {
   switch (event->key.keysym.sym) {
     case SDLK_LEFT: {
+#ifdef __APPLE__
       if (event->key.keysym.mod & KMOD_META) {
+#else
+      if (event->key.keysym.mod & KMOD_CTRL) {
+#endif
         world->previousRoom();
       }
       break;
     }
     case SDLK_DOWN: {
+#ifdef __APPLE__
       if (event->key.keysym.mod & KMOD_META) {
+#else
+      if (event->key.keysym.mod & KMOD_CTRL) {
+#endif
         world->resetPlayer();
       }
       break;
     }
     case SDLK_RIGHT: {
+#ifdef __APPLE__
       if (event->key.keysym.mod & KMOD_META) {
+#else
+      if (event->key.keysym.mod & KMOD_CTRL) {
+#endif
         world->nextRoom();
       }
       break;
@@ -192,6 +214,11 @@ static void eventLoop() {
 }
 
 int main(int argc, char** argv) {
+
+#ifndef __APPLE__
+  glutInit(&argc, argv);
+#endif
+
   SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 
   SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, 1);
