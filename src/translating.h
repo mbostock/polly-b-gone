@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_TRANSLATING_H
 #define MBOSTOCK_TRANSLATING_H

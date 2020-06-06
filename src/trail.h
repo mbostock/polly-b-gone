@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_TRAIL_H
 #define MBOSTOCK_TRAIL_H

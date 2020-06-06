@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_VECTOR_H
 #define MBOSTOCK_VECTOR_H

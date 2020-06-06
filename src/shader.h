@@ -1,9 +1,9 @@
-// -*- C++ -*-
+
 
 #ifndef _SHADER_H
 #define _SHADER_H
 
-#include <OpenGL/gl.h>
+#include <GL/gl.h>
 
 namespace mbostock {
 

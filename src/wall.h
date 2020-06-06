@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_WALL_H
 #define MBOSTOCK_WALL_H

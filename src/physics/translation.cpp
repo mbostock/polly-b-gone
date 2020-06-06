@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #include "particle.h"
 #include "translation.h"

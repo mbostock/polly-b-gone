@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #include <iostream>
 #include <stdlib.h>

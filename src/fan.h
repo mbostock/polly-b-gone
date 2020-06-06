@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_FAN_H
 #define MBOSTOCK_FAN_H

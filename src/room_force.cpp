@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #include "room_force.h"
 #include "physics/particle.h"

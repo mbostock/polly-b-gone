@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_TUBE_H
 #define MBOSTOCK_TUBE_H

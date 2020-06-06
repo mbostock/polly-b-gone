@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_PORTAL_H
 #define MBOSTOCK_PORTAL_H

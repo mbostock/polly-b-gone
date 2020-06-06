@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_SEESAW_H
 #define MBOSTOCK_SEESAW_H

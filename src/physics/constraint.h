@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_CONSTRAINT_H
 #define MBOSTOCK_CONSTRAINT_H

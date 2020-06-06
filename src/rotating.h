@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_ROTATING_H
 #define MBOSTOCK_ROTATING_H

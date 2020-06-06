@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #include "material.h"
 #include "model.h"

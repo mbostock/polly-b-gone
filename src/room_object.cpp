@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #include "physics/vector.h"
 #include "room_object.h"

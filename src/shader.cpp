@@ -1,7 +1,6 @@
-// -*- C++ -*-
-
 #include <stdlib.h>
-
+#include <GL/glew.h>
+#include <GL/gl.h>
 #include "model.h"
 #include "resource.h"
 #include "shader.h"

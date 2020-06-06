@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_MATERIAL_H
 #define MBOSTOCK_MATERIAL_H

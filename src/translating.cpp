@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #include "physics/particle.h"
 #include "physics/vector.h"

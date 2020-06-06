@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #include <algorithm>
 #include <math.h>

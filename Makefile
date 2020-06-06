@@ -1,107 +1,88 @@
-CXXFLAGS = \
-	-O2 \
-	-I/System/Library/Frameworks/GLUT.framework/Headers \
-	-I/System/Library/Frameworks/OpenGL.framework/Headers \
-	-I/System/Library/Frameworks/SDL.framework/Headers \
-	-I/System/Library/Frameworks/SDL_image.framework/Headers \
-	-I/System/Library/Frameworks/SDL_mixer.framework/Headers \
-	-I/System/Library/Frameworks/TinyXML.framework/Headers
+LIBS = -lGL -lGLEW -lGLU -lglut -ltinyxml -lSDL -lSDL_mixer -lSDL_image
+INCLUDES=-I /usr/include
 
-LDFLAGS = \
-	-framework Cocoa \
-	-framework GLUT \
-	-framework OpenGL \
-	-framework SDL \
-	-framework SDL_image \
-	-framework SDL_mixer \
-	-framework TinyXML
+SRC = ./src/portal.cpp \
+./src/fan.cpp \
+./src/physics/constraint.cpp \
+./src/physics/shape.cpp \
+./src/physics/vector.cpp \
+./src/physics/transform.cpp \
+./src/physics/force.cpp \
+./src/physics/particle.cpp \
+./src/physics/translation.cpp \
+./src/physics/rotation.cpp \
+./src/switch.cpp \
+./src/main.cpp \
+./src/room_force.cpp \
+./src/model.cpp \
+./src/resource.cpp \
+./src/wall.cpp \
+./src/world.cpp \
+./src/lighting.cpp \
+./src/ball.cpp \
+./src/worlds.cpp \
+./src/translating.cpp \
+./src/material.cpp \
+./src/transforming.cpp \
+./src/sound.cpp \
+./src/trail.cpp \
+./src/rotating.cpp \
+./src/player.cpp \
+./src/simulation.cpp \
+./src/tube.cpp \
+./src/shader.cpp \
+./src/ramp.cpp \
+./src/seesaw.cpp \
+./src/escalator.cpp \
+./src/room.cpp \
+./src/block.cpp \
+./src/texture.cpp \
+./src/room_object.cpp
 
-RESOURCES = \
-	resources/Polly.icns \
-	resources/*.frag \
-	resources/*.jpg \
-	resources/*.ogg \
-	resources/*.png \
-	resources/*.vert \
-	resources/world.xml
+OBJ = ./bin/portal.o \
+./bin/fan.o \
+./bin/constraint.o \
+./bin/shape.o \
+./bin/vector.o \
+./bin/transform.o \
+./bin/force.o \
+./bin/particle.o \
+./bin/translation.o \
+./bin/rotation.o \
+./bin/switch.o \
+./bin/main.o \
+./bin/room_force.o \
+./bin/model.o \
+./bin/resource.o \
+./bin/wall.o \
+./bin/world.o \
+./bin/lighting.o \
+./bin/ball.o \
+./bin/worlds.o \
+./bin/translating.o \
+./bin/material.o \
+./bin/transforming.o \
+./bin/sound.o \
+./bin/trail.o \
+./bin/rotating.o \
+./bin/player.o \
+./bin/simulation.o \
+./bin/tube.o \
+./bin/shader.o \
+./bin/ramp.o \
+./bin/seesaw.o \
+./bin/escalator.o \
+./bin/room.o \
+./bin/block.o \
+./bin/texture.o \
+./bin/room_object.o
 
-all : obj/Polly-B-Gone.app
+WARNINGS=-w
 
-obj/main.out : \
-	obj/ball.o \
-	obj/block.o \
-	obj/escalator.o \
-	obj/fan.o \
-	obj/lighting.o \
-	obj/material.o \
-	obj/model.o \
-	obj/physics/constraint.o \
-	obj/physics/force.o \
-	obj/physics/particle.o \
-	obj/physics/rotation.o \
-	obj/physics/shape.o \
-	obj/physics/transform.o \
-	obj/physics/translation.o \
-	obj/physics/vector.o \
-	obj/player.o \
-	obj/portal.o \
-	obj/ramp.o \
-	obj/resource.o \
-	obj/room.o \
-	obj/room_force.o \
-	obj/room_object.o \
-	obj/rotating.o \
-	obj/seesaw.o \
-	obj/shader.o \
-	obj/simulation.o \
-	obj/sound.o \
-	obj/switch.o \
-	obj/texture.o \
-	obj/trail.o \
-	obj/transforming.o \
-	obj/translating.o \
-	obj/tube.o \
-	obj/wall.o \
-	obj/world.o \
-	obj/worlds.o \
-	src/SDLMain.m
+FLAGS=-std=c++11
 
-obj/physics/particle_test.out : \
-	obj/physics/force.o \
-	obj/physics/particle.o \
-	obj/physics/vector.o \
-	obj/simulation.o
-
-obj/physics/shape_test.out : \
-	obj/physics/shape.o \
-	obj/physics/vector.o
-
-obj/physics/vector_test.out : \
-	obj/physics/vector.o
-
-obj/Polly-B-Gone.app : obj/main.out $(RESOURCES) resources/Info.plist Makefile
-	rm -rf $@
-	mkdir -p $@/Contents/MacOS
-	cp $< $@/Contents/MacOS/Polly-B-Gone
-	mkdir -p $@/Contents/Resources
-	cp resources/Info.plist $@/Contents
-	cp $(RESOURCES) $@/Contents/Resources
-	mkdir -p $@/Contents/Frameworks
-	cp -R /System/Library/Frameworks/SDL.framework $@/Contents/Frameworks
-	cp -R /System/Library/Frameworks/SDL_image.framework $@/Contents/Frameworks
-	cp -R /System/Library/Frameworks/SDL_mixer.framework $@/Contents/Frameworks
-	cp -R /System/Library/Frameworks/TinyXML.framework $@/Contents/Frameworks
-	find $@/Contents/Frameworks -name Headers | xargs rm -r
-#	ln -sf ../../../../resources/world.xml $@/Contents/Resources/world.xml
-
-obj/%.out : obj/%.o
-	$(CXX) $(LDFLAGS) -o $@ $^
-
-obj/%.o : src/%.cpp
-	mkdir -p $(@D)
-	$(CXX) -c $(CXXFLAGS) -o $@ $<
-
-.PRECIOUS : obj/%.o obj/physics/%.o
-
-clean:
-	rm -rf obj
+all:
+	g++ -c -g $(SRC) $(INCLUDES) $(WARNINGS) $(FLAGS)
+	ls bin>/dev/null||mkdir bin
+	mv *.o ./bin
+	g++ -g $(OBJ) $(LIBS) $(INCLUDES) -o bin/main $(WARNINGS) $(FLAGS)

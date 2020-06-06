@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #include "ball.h"
 #include "material.h"

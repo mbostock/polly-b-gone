@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_SHAPE_H
 #define MBOSTOCK_SHAPE_H

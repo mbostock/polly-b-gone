@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_SWITCH_H
 #define MBOSTOCK_SWITCH_H

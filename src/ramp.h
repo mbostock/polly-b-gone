@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_RAMP_H
 #define MBOSTOCK_RAMP_H

@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_ESCALATOR_H
 #define MBOSTOCK_ESCALATOR_H

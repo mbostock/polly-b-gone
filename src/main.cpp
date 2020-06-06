@@ -1,11 +1,10 @@
-// -*- C++ -*-
-
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
 #include <SDL/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <TinyXML/tinyxml.h>
+#include <tinyxml.h>
 
 #include "room.h"
 #include "shader.h"
@@ -98,8 +97,10 @@ static void handleDisplay() {
 }
 
 static void toggleShader() {
-  shaderi = (shaderi + 1) % shadern;
+  static int increment = 1;
+  shaderi = shaderi + increment;
   shader()->initialize();
+  increment *= -1;
 }
 
 static void toggleFullScreen() {
@@ -193,6 +194,8 @@ static void eventLoop() {
 
 int main(int argc, char** argv) {
   SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+
+  glutInit(&argc, argv);
 
   SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, 1);
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);

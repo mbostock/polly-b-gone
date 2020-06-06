@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_BALL_H
 #define MBOSTOCK_BALL_H

@@ -1,6 +1,4 @@
-// -*- C++ -*-
-
-#include <OpenGL/gl.h>
+#include <GL/gl.h>
 
 #include "material.h"
 #include "physics/constraint.h"

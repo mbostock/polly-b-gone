@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_WORLD_H
 #define MBOSTOCK_WORLD_H

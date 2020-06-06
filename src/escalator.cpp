@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #include "escalator.h"
 #include "material.h"

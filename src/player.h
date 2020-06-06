@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_PLAYER_H
 #define MBOSTOCK_PLAYER_H

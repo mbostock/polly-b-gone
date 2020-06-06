@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_FORCE_H
 #define MBOSTOCK_FORCE_H

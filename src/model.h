@@ -1,9 +1,7 @@
-// -*- C++ -*-
-
 #ifndef MBOSTOCK_MODEL_H
 #define MBOSTOCK_MODEL_H
 
-#include <OpenGL/glu.h>
+#include <GL/glu.h>
 
 #include "physics/shape.h"
 #include "physics/vector.h"

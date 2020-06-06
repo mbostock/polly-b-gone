@@ -1,4 +1,4 @@
-#include <TinyXML/tinyxml.h>
+#include <tinyxml.h>
 #include <iostream>
 #include <list>
 #include <map>
@@ -144,7 +144,7 @@ World* XmlWorldBuilder::parseWorld(const char* path) {
   std::string fullPath(Resources::path());
   fullPath.append(path);
   if (!document_.LoadFile(fullPath.c_str())) {
-    std::cerr << "Error loading world \"" << path << "\": ";
+    std::cerr << "Error loading world \"" << fullPath.c_str() << "\": ";
     std::cerr << document_.ErrorDesc() << "\n";
     return NULL;
   }

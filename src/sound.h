@@ -1,4 +1,4 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_SOUND_H
 #define MBOSTOCK_SOUND_H

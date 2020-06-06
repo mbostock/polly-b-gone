@@ -1,9 +1,9 @@
-// -*- C++ -*-
+
 
 #ifndef MBOSTOCK_TEXTURE_H
 #define MBOSTOCK_TEXTURE_H
 
-#include <OpenGL/gl.h>
+#include <GL/gl.h>
 
 namespace mbostock {
 
