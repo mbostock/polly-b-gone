@@ -1,20 +1,25 @@
+# Homebrew prefix
+HOMEBREW_PREFIX := $(shell brew --prefix 2>/dev/null || echo /opt/homebrew)
+
+# Compiler flags
 CXXFLAGS = \
 	-O2 \
-	-I/System/Library/Frameworks/GLUT.framework/Headers \
-	-I/System/Library/Frameworks/OpenGL.framework/Headers \
-	-I/System/Library/Frameworks/SDL.framework/Headers \
-	-I/System/Library/Frameworks/SDL_image.framework/Headers \
-	-I/System/Library/Frameworks/SDL_mixer.framework/Headers \
-	-I/System/Library/Frameworks/TinyXML.framework/Headers
+	-std=c++11 \
+	-Wno-deprecated-declarations \
+	-I$(HOMEBREW_PREFIX)/include \
+	-I$(HOMEBREW_PREFIX)/include/SDL2 \
+	-DTIXML_USE_STL
 
+# Linker flags
 LDFLAGS = \
 	-framework Cocoa \
-	-framework GLUT \
+	-framework CoreFoundation \
 	-framework OpenGL \
-	-framework SDL \
-	-framework SDL_image \
-	-framework SDL_mixer \
-	-framework TinyXML
+	-framework GLUT \
+	-L$(HOMEBREW_PREFIX)/lib \
+	-lSDL2 \
+	-lSDL2_image \
+	-lSDL2_mixer
 
 RESOURCES = \
 	resources/Polly.icns \
@@ -64,7 +69,11 @@ obj/main.out : \
 	obj/wall.o \
 	obj/world.o \
 	obj/worlds.o \
-	src/SDLMain.m
+	obj/tinyxml/tinyxml.o \
+	obj/tinyxml/tinyxmlerror.o \
+	obj/tinyxml/tinyxmlparser.o \
+	obj/tinyxml/tinystr.o \
+	obj/main.o
 
 obj/physics/particle_test.out : \
 	obj/physics/force.o \
@@ -86,13 +95,6 @@ obj/Polly-B-Gone.app : obj/main.out $(RESOURCES) resources/Info.plist Makefile
 	mkdir -p $@/Contents/Resources
 	cp resources/Info.plist $@/Contents
 	cp $(RESOURCES) $@/Contents/Resources
-	mkdir -p $@/Contents/Frameworks
-	cp -R /System/Library/Frameworks/SDL.framework $@/Contents/Frameworks
-	cp -R /System/Library/Frameworks/SDL_image.framework $@/Contents/Frameworks
-	cp -R /System/Library/Frameworks/SDL_mixer.framework $@/Contents/Frameworks
-	cp -R /System/Library/Frameworks/TinyXML.framework $@/Contents/Frameworks
-	find $@/Contents/Frameworks -name Headers | xargs rm -r
-#	ln -sf ../../../../resources/world.xml $@/Contents/Resources/world.xml
 
 obj/%.out : obj/%.o
 	$(CXX) $(LDFLAGS) -o $@ $^
@@ -101,7 +103,12 @@ obj/%.o : src/%.cpp
 	mkdir -p $(@D)
 	$(CXX) -c $(CXXFLAGS) -o $@ $<
 
-.PRECIOUS : obj/%.o obj/physics/%.o
+.PRECIOUS : obj/%.o obj/physics/%.o obj/tinyxml/%.o
 
 clean:
 	rm -rf obj
+
+run: obj/Polly-B-Gone.app
+	./obj/Polly-B-Gone.app/Contents/MacOS/Polly-B-Gone
+
+.PHONY: all clean run

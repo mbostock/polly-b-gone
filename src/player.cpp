@@ -548,38 +548,11 @@ void Player::jiggle() {
 
 void Player::move(Direction d) {
   switch (d) {
-    case LEFT: {
-      if (turnState_ == NONE) {
-        turnState_ = LEFT;
-      } else {
-        turnState_ = NONE;
-      }
-      break;
-    }
-    case RIGHT: {
-      if (turnState_ == NONE) {
-        turnState_ = RIGHT;
-      } else {
-        turnState_ = NONE;
-      }
-      break;
-    }
-    case FORWARD: {
-      if (moveState_ == NONE) {
-        moveState_ = FORWARD;
-      } else {
-        moveState_ = NONE;
-      }
-      break;
-    }
-    case BACKWARD: {
-      if (moveState_ == NONE) {
-        moveState_ = BACKWARD;
-      } else {
-        moveState_ = NONE;
-      }
-      break;
-    }
+    case LEFT: turnState_ = LEFT; break;
+    case RIGHT: turnState_ = RIGHT; break;
+    case FORWARD: moveState_ = FORWARD; break;
+    case BACKWARD: moveState_ = BACKWARD; break;
+    default: break;
   }
 }
 
@@ -590,37 +563,10 @@ void Player::stop() {
 
 void Player::stop(Direction d) {
   switch (d) {
-    case LEFT: {
-      if (turnState_ != NONE) {
-        turnState_ = NONE;
-      } else {
-        turnState_ = RIGHT;
-      }
-      break;
-    }
-    case RIGHT: {
-      if (turnState_ != NONE) {
-        turnState_ = NONE;
-      } else {
-        turnState_ = LEFT;
-      }
-      break;
-    }
-    case FORWARD: {
-      if (moveState_ != NONE) {
-        moveState_ = NONE;
-      } else {
-        moveState_ = BACKWARD;
-      }
-      break;
-    }
-    case BACKWARD: {
-      if (moveState_ != NONE) {
-        moveState_ = NONE;
-      } else {
-        moveState_ = FORWARD;
-      }
-      break;
-    }
+    case LEFT: if (turnState_ == LEFT) turnState_ = NONE; break;
+    case RIGHT: if (turnState_ == RIGHT) turnState_ = NONE; break;
+    case FORWARD: if (moveState_ == FORWARD) moveState_ = NONE; break;
+    case BACKWARD: if (moveState_ == BACKWARD) moveState_ = NONE; break;
+    default: break;
   }
 }

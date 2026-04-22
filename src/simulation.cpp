@@ -1,6 +1,6 @@
 // -*- C++ -*-
 
-#include <SDL/sdl.h>
+#include <SDL2/SDL.h>
 
 #include "simulation.h"
 

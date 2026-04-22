@@ -1,7 +1,7 @@
 // -*- C++ -*-
 
-#include <SDL/SDL_error.h>
-#include <SDL_mixer/SDL_mixer.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 #include <iostream>
 #include <string>
 #include <vector>
